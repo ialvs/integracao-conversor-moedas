@@ -1,3 +1,4 @@
+import { Transaction } from "src/transaction/transaction.entity"
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
