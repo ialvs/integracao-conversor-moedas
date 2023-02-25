@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type :"sqlite",
-    database: "shoppingDB",
+    database: "converterDB",
     entities: [__dirname + "/**/*.entity{.ts,.js}"],
     synchronize: true
   })],
