@@ -41,7 +41,21 @@ export class TransactionService {
         return await this.transactionRepository.delete(id);
     }
 
-    async convert(conversion: Conversion): Promise<Transaction>{
-        
+    async convert(idUser: number, conversion: Conversion): Promise<Transaction>{
+        const transaction = this.transactionRepository.create({
+            sourceCurrency: conversion.query.from,
+            targetCurrency: conversion.query.to,
+            sourceValue: conversion.query.amount,
+            conversionRate: conversion.info.rate,
+            dateTime: this.timestampToUTC(conversion.info.timestamp),
+            convertedValue: conversion.query.amount * conversion.info.rate,
+            user: {id: idUser}
+        })
+        return await this.transactionRepository.save(transaction)
+    }
+
+    timestampToUTC(timestamp: number): string{
+        const date = new Date(timestamp*1000)
+        return date.toISOString()
     }
 }
