@@ -1,5 +1,5 @@
 import { User } from "src/user/user.entity";
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Transaction{
@@ -20,6 +20,9 @@ export class Transaction{
 
     @Column({type:"datetime"})
     dateTime: string
+
+    @Column()
+    convertedValue: number
 
     @ManyToOne(() => User, (user) => user.transactions,{cascade: true, eager: true})
     user: User
