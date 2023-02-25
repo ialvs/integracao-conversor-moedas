@@ -36,8 +36,8 @@ export class TransactionController {
 
     }
 
-    @Get('/convert/:to/:from/:amount')
-    async Convert(@Param('to') targetCurrency: string, @Param('from') sourceCurrency: string, @Param('amount') sourceValue: number): Promise<Transaction> {
+    @Get('/convert/:idUser/:to/:from/:amount')
+    async Convert(@Param('to') targetCurrency: string, @Param('from') sourceCurrency: string, @Param('amount') sourceValue: number, @Param('idUser') idUser: number): Promise<Transaction> {
 
         const header = new Headers()
         header.append(apikey.id, apikey.value)
@@ -54,7 +54,7 @@ export class TransactionController {
             .catch(error => console.log('error', error));
 
         const conversion: Conversion = JSON.parse(convertMessage)
-        return await this.transactionService.convert(conversion)
+        return await this.transactionService.convert(idUser,conversion)
 
     }
 
