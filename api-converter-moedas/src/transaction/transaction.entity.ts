@@ -18,7 +18,7 @@ export class Transaction{
     @Column()
     conversionRate: number
 
-    @Column({type:"datetime"})
+    @Column()
     dateTime: string
 
     @Column()
