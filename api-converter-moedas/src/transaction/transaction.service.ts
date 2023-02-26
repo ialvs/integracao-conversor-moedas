@@ -43,10 +43,6 @@ export class TransactionService {
 
     async convert(idUser: number, conversion: Conversion): Promise<Transaction>{
         
-        //const user = await this.userService.findOne(idUser)
-
-        //const transactionUpdated = await this.transactionRepository.update(transaction.id,user)
-
         return await this.transactionRepository.save({
             sourceCurrency: conversion.query.from,
             targetCurrency: conversion.query.to,
