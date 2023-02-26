@@ -42,16 +42,21 @@ export class TransactionService {
     }
 
     async convert(idUser: number, conversion: Conversion): Promise<Transaction>{
-        const transaction = this.transactionRepository.create({
+        
+        //const user = await this.userService.findOne(idUser)
+
+        //const transactionUpdated = await this.transactionRepository.update(transaction.id,user)
+
+        return await this.transactionRepository.save({
             sourceCurrency: conversion.query.from,
             targetCurrency: conversion.query.to,
             sourceValue: conversion.query.amount,
             conversionRate: conversion.info.rate,
             dateTime: this.timestampToUTC(conversion.info.timestamp),
             convertedValue: conversion.query.amount * conversion.info.rate,
-            user: {id: idUser}
-        })
-        return await this.transactionRepository.save(transaction)
+            user: {
+                id: idUser
+            }})
     }
 
     timestampToUTC(timestamp: number): string{
