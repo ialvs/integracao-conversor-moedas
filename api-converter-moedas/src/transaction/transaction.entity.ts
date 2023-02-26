@@ -24,7 +24,7 @@ export class Transaction{
     @Column()
     convertedValue: number
 
-    @ManyToOne(() => User, (user) => user.transactions,{cascade: true, eager: true})
+    @ManyToOne(() => User, (user) => user.transactions)
     user: User
 }
 
