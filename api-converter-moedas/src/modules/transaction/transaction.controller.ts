@@ -20,8 +20,16 @@ export class TransactionController {
     }
 
     @Get('/convert/:idUser/:to/:from/:amount')
-    async Convert(@Param('to') targetCurrency: string, @Param('from') sourceCurrency: string, @Param('amount') sourceValue: number, @Param('idUser') idUser: number): Promise<Transaction> {
+    async Convert(@Param('to') targetCurrency: string,
+        @Param('from') sourceCurrency: string,
+        @Param('amount') sourceValue: number,
+        @Param('idUser') idUser: number): Promise<Transaction> {
 
         return await this.transactionService.convert(targetCurrency, sourceCurrency, sourceValue, idUser)
+    }
+
+    @Get('/user/:userId')
+    async GetByUser(@Param('userId') userId: number): Promise<Transaction[]>{
+        return await this.transactionService.findByUser(userId)
     }
 }

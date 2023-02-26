@@ -42,7 +42,10 @@ export class TransactionService {
         return await this.transactionRepository.delete(id);
     }
 
-    async convert(targetCurrency: string, sourceCurrency: string, sourceValue: number, idUser: number): Promise<Transaction> {
+    async convert(targetCurrency: string,
+        sourceCurrency: string,
+        sourceValue: number,
+        idUser: number): Promise<Transaction> {
 
         const header = new Headers()
         header.append(apikey.id, apikey.keyvalue)
@@ -83,5 +86,16 @@ export class TransactionService {
         const response = await fetch(url, requestInit);
         const data = await response.json()
         return data;
+    }
+
+    async findByUser(id: number): Promise<Transaction[]> {
+        return await this.transactionRepository.find({
+            where: {
+                user: {
+                    id: id
+                }
+            }
+        }
+        )
     }
 }
