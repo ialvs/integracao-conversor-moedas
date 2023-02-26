@@ -67,7 +67,7 @@ export class TransactionService {
             sourceValue: conversion.query.amount,
             conversionRate: conversion.info.rate,
             dateTime: this.timestampToUTC(conversion.info.timestamp),
-            convertedValue: conversion.query.amount * conversion.info.rate,
+            convertedValue: conversion.result,
             user: {
                 id: idUser
             }
