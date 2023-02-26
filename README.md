@@ -21,6 +21,7 @@ O projeto deverá ser feito em Node.js com TypeScript.
     * Moeda destino;
     * Taxa de conversão utilizada;
     * Data/Hora UTC;
+
 1. Uma transação com sucesso deve retornar: <span style="color: #00ff00">&#10003;</span>
     * ID da transação
     * ID do usuário;
@@ -30,12 +31,17 @@ O projeto deverá ser feito em Node.js com TypeScript.
     * Valor destino;
     * Taxa de conversão utilizada;
     * Data/Hora UTC;
+
 1. Os casos de falha devem retornar com status code pertinente e descrição no corpo;
 1. Deverá existir um endpoint para listagem de todas as transações realizadas por usuário; <span style="color: #00ff00">&#10003;</span>
+
 1. Deve haver uma cobertura satisfatória de testes;
+
 1. Deve-se adicionar a esse arquivo explicações sobre como rodar a aplicação, e uma apresentação sobre o
 projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas;
+
 1. Todo o código deve ser em inglês; <span style="color: #00ff00">&#10003;</span>
+
 1. Disponibilizar o código apenas nesse repositório, sem nenhuma cópia pública, para evitar plágio; <span style="color: #00ff00">&#10003;</span>
 
 ## Itens desejáveis
