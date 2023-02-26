@@ -49,13 +49,22 @@ export class TransactionController {
 
         const requestInit: RequestInit = { ...config };
 
-        const convertMessage = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${targetCurrency}&from=${sourceCurrency}&amount=${sourceValue}`, requestInit)
-            .then(response => response.json())
-            .catch(error => console.log('error', error));
+        const url:string = `https://api.apilayer.com/exchangerates_data/convert?to=${targetCurrency}&from=${sourceCurrency}&amount=${sourceValue}`
 
-        const conversion: Conversion = JSON.parse(convertMessage)
-        return await this.transactionService.convert(idUser,conversion)
+        const convertMessage: any = await this.fetchConversion(url,requestInit)
+        
+        const conversion: Conversion = await JSON.parse(JSON.stringify(convertMessage)) as Conversion
+        
+        return await this.transactionService.convert(idUser, conversion)
 
     }
+
+    async fetchConversion(url: string, requestInit: RequestInit): Promise<any> {
+        const response = await fetch(url, requestInit);
+        const data = await response.json()
+        return data;
+    }
+
+
 
 }
