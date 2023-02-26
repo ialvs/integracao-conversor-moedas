@@ -1,7 +1,8 @@
-import { Controller, Get, Delete, Param } from '@nestjs/common';
+import { Controller, Get, Delete, Param, HttpStatus } from '@nestjs/common';
 import { DeleteResult } from 'typeorm';
 import { TransactionService } from './transaction.service';
 import { Transaction } from './transaction.entity';
+import { HttpException } from '@nestjs/common/exceptions';
 
 @Controller('api/v1/transactions')
 export class TransactionController {
@@ -9,7 +10,13 @@ export class TransactionController {
 
   @Get()
   async GetAll(): Promise<Transaction[]> {
-    return await this.transactionService.findAll();
+    const transactions = await this.transactionService.findAll();
+
+    if (transactions.length > 0) {
+      return transactions;
+    } else {
+      throw new HttpException('No transaction found', HttpStatus.NOT_FOUND);
+    }
   }
 
   @Get(':id')
