@@ -1,5 +1,5 @@
 import { Controller, Post, Get, Put, Delete, Param, Body } from '@nestjs/common';
-import { UpdateResult, DeleteResult } from 'typeorm';
+import { DeleteResult } from 'typeorm';
 import { TransactionService } from './transaction.service';
 import { Transaction } from './transaction.entity';
 import { apikey } from 'src/apikey';
@@ -8,16 +8,6 @@ import { Conversion } from 'src/conversion';
 @Controller('api/v1/transactions')
 export class TransactionController {
     constructor(private transactionService: TransactionService) { }
-
-    @Get()
-    async GetAll(): Promise<Transaction[]> {
-        return await this.transactionService.findAll()
-    }
-
-    @Post()
-    async Create(@Body() Transaction: Transaction): Promise<Transaction> {
-        return await this.transactionService.create(Transaction)
-    }
 
     @Get(':id')
     async GetOne(@Param('id') id: number): Promise<Transaction> {
@@ -28,12 +18,6 @@ export class TransactionController {
     async Delete(@Param() id: number): Promise<DeleteResult> {
 
         return await this.transactionService.remove(id)
-    }
-
-    @Put(':id')
-    async Update(@Param() id: number, @Body() Transaction: Transaction): Promise<UpdateResult> {
-        return await this.transactionService.update(id, Transaction);
-
     }
 
     @Get('/convert/:idUser/:to/:from/:amount')
