@@ -32,7 +32,7 @@ O projeto deverá ser feito em Node.js com TypeScript.
     * Taxa de conversão utilizada;
     * Data/Hora UTC;
 
-1. Os casos de falha devem retornar com status code pertinente e descrição no corpo;
+1. Os casos de falha devem retornar com status code pertinente e descrição no corpo; <span style="color: #00ff00">&#10003;</span>
 1. Deverá existir um endpoint para listagem de todas as transações realizadas por usuário; <span style="color: #00ff00">&#10003;</span>
 
 1. Deve haver uma cobertura satisfatória de testes;
