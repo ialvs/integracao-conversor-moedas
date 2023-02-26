@@ -1,6 +1,6 @@
-import { apivalue } from "./apivalue"
+import { apivalue } from './apivalue';
 
 export const apikey = {
-    id: 'apikey',
-    keyvalue: apivalue.keyvalue
-}
+  id: 'apikey',
+  keyvalue: apivalue.keyvalue,
+};

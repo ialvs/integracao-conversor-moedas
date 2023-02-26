@@ -6,14 +6,18 @@ import { TransactionModule } from './modules/transaction/transaction.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: "sqlite",
-    database: "converterDB",
-    entities: [__dirname + "/**/*.entity{.ts,.js}"],
-    synchronize: true,
-    autoLoadEntities: true
-  }), UserModule, TransactionModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'converterDB',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
+    UserModule,
+    TransactionModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
