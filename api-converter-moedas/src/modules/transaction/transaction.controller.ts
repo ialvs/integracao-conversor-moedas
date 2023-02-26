@@ -2,8 +2,7 @@ import { Controller, Post, Get, Put, Delete, Param, Body } from '@nestjs/common'
 import { DeleteResult } from 'typeorm';
 import { TransactionService } from './transaction.service';
 import { Transaction } from './transaction.entity';
-import { apikey } from 'src/apikey';
-import { Conversion } from 'src/conversion';
+
 
 @Controller('api/v1/transactions')
 export class TransactionController {

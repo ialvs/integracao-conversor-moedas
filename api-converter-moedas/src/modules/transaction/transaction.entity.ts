@@ -1,11 +1,11 @@
-import { User } from "src/user/user.entity";
+import { User } from "src/modules/user/user.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Transaction{
+export class Transaction {
     @PrimaryGeneratedColumn()
     id!: number
-    
+
     @Column()
     sourceCurrency: string
 
@@ -14,7 +14,7 @@ export class Transaction{
 
     @Column()
     targetCurrency: string
-    
+
     @Column()
     conversionRate: number
 
