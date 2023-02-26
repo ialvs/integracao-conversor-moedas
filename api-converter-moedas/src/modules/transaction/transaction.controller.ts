@@ -21,7 +21,16 @@ export class TransactionController {
 
   @Get(':id')
   async GetOne(@Param('id') id: number): Promise<Transaction> {
-    return await this.transactionService.findOne(id);
+    const transaction = await this.transactionService.findOne(id);
+
+    if (transaction) {
+      return transaction;
+    } else {
+      throw new HttpException(
+        `No transaction with id ${id} found`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 
   @Delete(':id')
