@@ -34,8 +34,17 @@ export class TransactionController {
   }
 
   @Delete(':id')
-  async Delete(@Param() id: number): Promise<DeleteResult> {
-    return await this.transactionService.remove(id);
+  async Delete(@Param('id') id: number): Promise<DeleteResult> {
+    const transaction = await this.transactionService.remove(id);
+
+    if (transaction.affected != 0) {
+      return transaction;
+    } else {
+      throw new HttpException(
+        `No transaction with id ${id} found`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 
   @Get('/convert/:idUser/:to/:from/:amount')
