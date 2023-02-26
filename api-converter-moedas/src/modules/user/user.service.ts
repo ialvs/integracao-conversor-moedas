@@ -26,7 +26,11 @@ export class UserService {
   }
 
   async create(user: User): Promise<User> {
-    return await this.userRepository.save(user);
+    if (user instanceof User) {
+      return await this.userRepository.save(user);
+    } else {
+      return user;
+    }
   }
 
   async update(id: number, user: User): Promise<UpdateResult> {
