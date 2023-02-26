@@ -13,7 +13,7 @@ export class User {
     @Column({length: 255})
     email: string
 
-    @OneToMany(() => Transaction, (transaction) => transaction.user)
+    @OneToMany(() => Transaction, (transaction) => transaction.user,{cascade: true, eager: true})
     transactions: Transaction[]
 
 }
