@@ -64,6 +64,15 @@ export class TransactionController {
 
   @Get('/user/:userId')
   async GetByUser(@Param('userId') userId: number): Promise<Transaction[]> {
-    return await this.transactionService.findByUser(userId);
+    const transaction = await this.transactionService.findByUser(userId);
+
+    if (transaction.length > 0) {
+      return transaction;
+    } else {
+      throw new HttpException(
+        `The user with id ${userId} has no transactions`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 }
