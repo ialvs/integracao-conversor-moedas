@@ -1,7 +1,7 @@
-import { Injectable, Res } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { apikey } from 'src/apikey';
-import { Conversion } from 'src/conversion';
+import { apikey } from 'src/utils/apikey';
+import { Conversion } from 'src/utils/conversion';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { Transaction } from './transaction.entity';
 
@@ -45,7 +45,7 @@ export class TransactionService {
     async convert(targetCurrency: string, sourceCurrency: string, sourceValue: number, idUser: number): Promise<Transaction> {
 
         const header = new Headers()
-        header.append(apikey.id, apikey.value)
+        header.append(apikey.id, apikey.keyvalue)
 
         const config = {
             method: 'GET',
@@ -54,7 +54,8 @@ export class TransactionService {
 
         const requestInit: RequestInit = { ...config };
 
-        const url: string = `https://api.apilayer.com/exchangerates_data/convert?to=${targetCurrency}&from=${sourceCurrency}&amount=${sourceValue}`
+        const url: string =
+            `https://api.apilayer.com/exchangerates_data/convert?to=${targetCurrency}&from=${sourceCurrency}&amount=${sourceValue}`
 
         const conversion: Conversion = await JSON.parse
             (JSON.stringify
