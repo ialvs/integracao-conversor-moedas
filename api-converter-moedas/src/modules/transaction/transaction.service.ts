@@ -14,9 +14,7 @@ export class TransactionService {
 
   async findAll(): Promise<Transaction[]> {
     return await this.transactionRepository.find({
-      relations: {
-        user: true,
-      },
+      relations: { user: true },
     });
   }
 

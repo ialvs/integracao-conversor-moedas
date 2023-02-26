@@ -7,6 +7,11 @@ import { Transaction } from './transaction.entity';
 export class TransactionController {
   constructor(private transactionService: TransactionService) {}
 
+  @Get()
+  async GetAll(): Promise<Transaction[]> {
+    return await this.transactionService.findAll();
+  }
+
   @Get(':id')
   async GetOne(@Param('id') id: number): Promise<Transaction> {
     return await this.transactionService.findOne(id);
