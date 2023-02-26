@@ -1,5 +1,6 @@
 import { Injectable, Res } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { apikey } from 'src/apikey';
 import { Conversion } from 'src/conversion';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { Transaction } from './transaction.entity';
@@ -41,8 +42,24 @@ export class TransactionService {
         return await this.transactionRepository.delete(id);
     }
 
-    async convert(idUser: number, conversion: Conversion): Promise<Transaction>{
-        
+    async convert(targetCurrency: string, sourceCurrency: string, sourceValue: number, idUser: number): Promise<Transaction> {
+
+        const header = new Headers()
+        header.append(apikey.id, apikey.value)
+
+        const config = {
+            method: 'GET',
+            headers: header
+        }
+
+        const requestInit: RequestInit = { ...config };
+
+        const url: string = `https://api.apilayer.com/exchangerates_data/convert?to=${targetCurrency}&from=${sourceCurrency}&amount=${sourceValue}`
+
+        const conversion: Conversion = await JSON.parse
+            (JSON.stringify
+                (await this.fetchConversion(url, requestInit))) as Conversion
+
         return await this.transactionRepository.save({
             sourceCurrency: conversion.query.from,
             targetCurrency: conversion.query.to,
@@ -52,11 +69,18 @@ export class TransactionService {
             convertedValue: conversion.query.amount * conversion.info.rate,
             user: {
                 id: idUser
-            }})
+            }
+        })
     }
 
-    timestampToUTC(timestamp: number): string{
-        const date = new Date(timestamp*1000)
+    timestampToUTC(timestamp: number): string {
+        const date = new Date(timestamp * 1000)
         return date.toISOString()
+    }
+
+    async fetchConversion(url: string, requestInit: RequestInit): Promise<any> {
+        const response = await fetch(url, requestInit);
+        const data = await response.json()
+        return data;
     }
 }
