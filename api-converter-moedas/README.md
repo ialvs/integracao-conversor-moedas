@@ -28,19 +28,19 @@ A API utiliza a porta 3000 por padrão. As rotas disponíveis são:
 
 **Usuários:**
 
-- **GET api/v1/users/**: Retorna uma lista com todos os usuários.
-- **GET api/v1/users/:userId/**: Retorna as informações de um usuário.
-- **POST api/v1/users/**: Cria um novo usuário.
-- **PATCH api/v1/users/:userId/**: Atualiza as informações de um usuário.
-- **DELETE api/v1/users/:userId/**: Remove as informações de um usuário.
+- **GET /api/v1/users/**: Retorna uma lista com todos os usuários.
+- **GET /api/v1/users/:userId/**: Retorna as informações de um usuário.
+- **POST /api/v1/users/**: Cria um novo usuário.
+- **PATCH /api/v1/users/:userId/**: Atualiza as informações de um usuário.
+- **DELETE /api/v1/users/:userId/**: Remove as informações de um usuário.
 
 **Transações:**
 
-- **GET api/v1/transactions/**: Retorna uma lista com todas as transações realizadas.
-- **GET api/v1/transactions/:transactionId/**: Retorna as informações de uma transação específica.
-- **GET api/v1/transactions/user/:userId**: Retorna uma lista com todas as transações de um usuário.
-- **GET api/v1/transactions/convert/:idUser/:to/:from/:amount**: Realiza a conversão cambial e registra a transação.
-- **DELETE api/v1/transactions/:transactionId/**: Remove as informações de uma transação.
+- **GET /api/v1/transactions/**: Retorna uma lista com todas as transações realizadas.
+- **GET /api/v1/transactions/:transactionId/**: Retorna as informações de uma transação específica.
+- **GET /api/v1/transactions/user/:userId**: Retorna uma lista com todas as transações de um usuário.
+- **GET /api/v1/transactions/convert/:idUser/:to/:from/:amount**: Realiza a conversão cambial e registra a transação.
+- **DELETE /api/v1/transactions/:transactionId/**: Remove as informações de uma transação.
 
 ## Tecnologias utilizadas
 
