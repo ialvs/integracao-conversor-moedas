@@ -24,7 +24,7 @@ export class UserController {
     if (users.length > 0) {
       return users;
     } else {
-      throw new HttpException('No transaction found', HttpStatus.NOT_FOUND);
+      throw new HttpException('No user found', HttpStatus.NOT_FOUND);
     }
   }
 
