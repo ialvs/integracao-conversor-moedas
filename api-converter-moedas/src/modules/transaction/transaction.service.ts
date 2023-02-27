@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { apikey } from 'src/utils/apikey';
-import { Conversion } from 'src/utils/conversion';
+import { apikey } from '../../utils/apikey';
+import { Conversion } from '../../utils/conversion';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { Transaction } from './transaction.entity';
 
