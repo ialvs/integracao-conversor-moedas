@@ -19,8 +19,8 @@ export class TransactionController {
     }
   }
 
-  @Get(':id')
-  async GetOne(@Param('id') id: number): Promise<Transaction> {
+  @Get(':transactionId')
+  async GetOne(@Param('transactionId') id: number): Promise<Transaction> {
     const transaction = await this.transactionService.findOne(id);
 
     if (transaction) {
