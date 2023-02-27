@@ -35,10 +35,10 @@ O projeto deverá ser feito em Node.js com TypeScript.
 1. Os casos de falha devem retornar com status code pertinente e descrição no corpo; <span style="color: #00ff00">&#10003;</span>
 1. Deverá existir um endpoint para listagem de todas as transações realizadas por usuário; <span style="color: #00ff00">&#10003;</span>
 
-1. Deve haver uma cobertura satisfatória de testes;
+1. Deve haver uma cobertura satisfatória de testes; <span style="color: #00ff00">&#10003;</span>
 
 1. Deve-se adicionar a esse arquivo explicações sobre como rodar a aplicação, e uma apresentação sobre o
-projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas;
+projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas; <span style="color: #00ff00">&#10003;</span>
 
 1. Todo o código deve ser em inglês; <span style="color: #00ff00">&#10003;</span>
 
@@ -46,12 +46,12 @@ projeto: propósito, features, motivação das principais escolhas de tecnologia
 
 ## Itens desejáveis
 * Logs
-* Tratamento de exceções
+* Tratamento de exceções <span style="color: #00ff00">&#10003;</span>
 * Documentação
-* Coesão de commits 
+* Coesão de commits <span style="color: #00ff00">&#10003;</span>
 * Mensagens de commits claras <span style="color: #00ff00">&#10003;</span>
 * Configuração de lint <span style="color: #00ff00">&#10003;</span>
-* Testes unitários
+* Testes unitários <span style="color: #00ff00">&#10003;</span>
 * Testes de integração
 * Documentação dos endpoints
 * Estar rodando e disponível (Ex: Heroku, ou similar)
