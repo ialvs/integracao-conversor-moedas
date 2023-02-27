@@ -31,15 +31,7 @@ export class UserController {
   @Post()
   async Create(@Body() user: User): Promise<User> {
     const newUser = await this.userService.create(user);
-
-    if (newUser instanceof User) {
-      return newUser;
-    } else {
-      throw new HttpException(
-        `The data provided does not match the attributes of the User entity (name, email)`,
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    return await this.checkUser(newUser);
   }
 
   @Get(':id')
@@ -83,6 +75,17 @@ export class UserController {
       throw new HttpException(
         `No user with id ${id} found`,
         HttpStatus.NOT_FOUND,
+      );
+    }
+  }
+
+  async checkUser(newUser: User) {
+    if (newUser != null) {
+      return newUser;
+    } else {
+      throw new HttpException(
+        `The data provided does not match the attributes of the User entity (name, email)`,
+        HttpStatus.BAD_REQUEST,
       );
     }
   }

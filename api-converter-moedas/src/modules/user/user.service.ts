@@ -25,11 +25,11 @@ export class UserService {
     });
   }
 
-  async create(user: User): Promise<User> {
-    if (user instanceof User) {
+  async create(user: User): Promise<User> | null {
+    if ('name' in user && 'email' in user) {
       return await this.userRepository.save(user);
     } else {
-      return user;
+      return null;
     }
   }
 
