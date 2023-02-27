@@ -15,7 +15,7 @@ Antes de tudo, certifique-se de ter o Node.js e o npm instalados em sua máquina
 3. Instale as dependências:
 `npm install`
 
-4. acesse a pasta `src/utils` e modifique o atributo `keyvalue` do arquivo apikey.ts para chave da API de terceiros  
+4. Acesse a pasta `src/utils` e exporte um objeto chamado `apivalue` com um atributo `keyvalue`. Atribua o valor da chave API de terceiros. Exemplo no arquivo `src/utils/apikey.ts`.  
 
 5. Inicie a aplicação:
 `npm start`
