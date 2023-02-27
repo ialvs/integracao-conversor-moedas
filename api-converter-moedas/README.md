@@ -1,73 +1,56 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# API REST para integração com API Conversora de Moedas
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Essa é uma API RESTful escrita em NestJS que utiliza TypeORM e SQLite para registrar conversões cambiais feitas pelos usuários utilizando a API de terceiros https://apilayer.com/marketplace/exchangerates_data-api?utm_source=apilayermarketplace&utm_medium=featured. Com ela, é possível criar, atualizar, remover e listar os usuários e realizar requisições a uma API de terceiros para converter moedas, mantendo o registro dessas transações.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Instalação
 
-## Description
+Antes de tudo, certifique-se de ter o Node.js e o npm instalados em sua máquina.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Clone o repositório para sua máquina:
+`git clone https://ian_alves@bitbucket.org/recrutamento_jya_nodejs/recrutamento-conversor-nodejs-ian.santos.alves_hotmail.com.git `
 
-## Installation
+2. Acesse a pasta da API:
+`cd api-converter-moedas`
 
-```bash
-$ npm install
-```
+3. Instale as dependências:
+`npm install`
 
-## Running the app
+4. acesse a pasta `src/utils` e modifique o atributo `keyvalue` do arquivo apikey.ts para chave da API de terceiros  
 
-```bash
-# development
-$ npm run start
+5. Inicie a aplicação:
+`npm start`
 
-# watch mode
-$ npm run start:dev
+6. Teste os endpoints com um client HTTP
 
-# production mode
-$ npm run start:prod
-```
+## Uso
 
-## Test
+A API utiliza a porta 3000 por padrão. As rotas disponíveis são:
 
-```bash
-# unit tests
-$ npm run test
+**Usuários:**
 
-# e2e tests
-$ npm run test:e2e
+- **GET api/v1/users/**: Retorna uma lista com todos os usuários.
+- **GET api/v1/users/:userId/**: Retorna as informações de um usuário.
+- **POST api/v1/users/**: Cria um novo usuário.
+- **PATCH api/v1/users/:userId/**: Atualiza as informações de um usuário.
+- **DELETE api/v1/users/:userId/**: Remove as informações de um usuário.
 
-# test coverage
-$ npm run test:cov
-```
+**Transações:**
 
-## Support
+- **GET api/v1/transactions/**: Retorna uma lista com todas as transações realizadas.
+- **GET api/v1/transactions/:transactionId/**: Retorna as informações de uma transação específica.
+- **GET api/v1/transactions/user/:userId**: Retorna uma lista com todas as transações de um usuário.
+- **GET api/v1/transactions/convert/:idUser/:to/:from/:amount**: Realiza a conversão cambial e registra a transação.
+- **DELETE api/v1/transactions/:transactionId/**: Remove as informações de uma transação.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Tecnologias utilizadas
 
-## Stay in touch
+- Typescript: Requisito do projeto.
+- NestJS: Framework JavaScript construído com base no Express tendo, assim, diversas funcionalidades já inclusas. Escolhido para acelerar o desenvolvimento do projeto.
+- TypeORM: ORM de preferência do Nest. Simplifica o gerenciamento do Banco de Dados.
+- SQLite: Banco embedded leve e que não precisa de muitas configurações. Se integra bem com o Nest e o TypeORM.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Organização das camadas
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Segue o padrão de arquitetura do Nest: classes Entity para mapear as tabelas SQL, classes service para aplicação das regras de negócio e interação com a API Repository do TypeORM e classes controller para gerenciar os endpoints e utilizar os métodos corretos do service. 
+- Além disso, temos classes modules para gerenciamento dos módulos.
+- Em utils, temos arquivos para auxiliar os métodos das outras classes (objeto apikey para guardar as credenciais da API terceira e classe Conversion para lidar com a resposta da classe terceira).
