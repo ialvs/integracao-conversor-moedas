@@ -7,7 +7,7 @@ Essa é uma API RESTful escrita em NestJS que utiliza TypeORM e SQLite para regi
 Antes de tudo, certifique-se de ter o Node.js e o npm instalados em sua máquina.
 
 1. Clone o repositório para sua máquina:
-`git clone https://ian_alves@bitbucket.org/recrutamento_jya_nodejs/recrutamento-conversor-nodejs-ian.santos.alves_hotmail.com.git `
+`git clone git@github.com:ialvs/integracao-conversor-moedas.git `
 
 2. Acesse a pasta da API:
 `cd api-converter-moedas`
