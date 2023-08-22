@@ -54,3 +54,9 @@ A API utiliza a porta 3000 por padrão. As rotas disponíveis são:
 - Segue o padrão de arquitetura do Nest: classes Entity para mapear as tabelas SQL, classes service para aplicação das regras de negócio e interação com a API Repository do TypeORM e classes controller para gerenciar os endpoints e utilizar os métodos corretos do service. 
 - Além disso, temos classes modules para gerenciamento dos módulos.
 - Em utils, temos arquivos para auxiliar os métodos das outras classes (objeto apikey para guardar as credenciais da API terceira e classe Conversion para lidar com a resposta da classe terceira).
+
+## Prints
+
+![Print-Insomnia](https://media.licdn.com/dms/image/D4D22AQFhSNmPh1cu1w/feedshare-shrink_800/0/1682467122911?e=1695254400&v=beta&t=PS0l2_ybLkpJAKmgo84SWaZksmkRV2MX-TARLTl5mDo)
+
+![Print-Insomnia-2](https://media.licdn.com/dms/image/D4D22AQF1aJzgZRnyMQ/feedshare-shrink_2048_1536/0/1682467123845?e=1695254400&v=beta&t=mvVKUxeAZZ7Twwok8tnMNJL1ADIU6AgATphQMJiuke4)
